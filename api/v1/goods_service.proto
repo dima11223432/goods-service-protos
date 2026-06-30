@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package goods.v1;
+
+option go_package = "goods-service/api/v1;goods_v1";
+
+service GoodsService {
+  rpc GetProductCard(GetProductCardRequest) returns (GetProductCardResponse);
+}
+
+message GetProductCardRequest {
+  string barcode = 1;
+}
+
+message GetProductCardResponse {
+  oneof result {
+    string barcode_pending = 1;
+    Product product = 2;
+  }
+}
+
+message Product {
+  string barcode = 1;
+  string name = 2;
+  string brands = 3;
+  string quantity = 4;
+  repeated string categories = 5;
+  repeated string labels = 6;
+  repeated string allergens = 7;
+  repeated string additives = 8;
+  string ingredients_text = 9;
+
+  Nutriments nutriments = 10;
+  NutrientLevels nutrient_levels = 11;
+  Nutriscore nutriscore = 12;
+  int32 nova_group = 13;
+  string ecoscore_grade = 14;
+  string image_url = 15;
+}
+
+message Nutriments {
+  double energy_kcal = 1;
+  double fat = 2;
+  double saturated_fat = 3;
+  double carbohydrates = 4;
+  double sugars = 5;
+  double added_sugars = 6;
+  double fiber = 7;
+  double proteins = 8;
+  double salt = 9;
+  double sodium = 10;
+}
+
+message NutrientLevels {
+  string fat = 1;
+  string saturated_fat = 2;
+  string sugars = 3;
+  string salt = 4;
+}
+
+message Nutriscore {
+  string grade = 1;
+  int32 score = 2;
+}
