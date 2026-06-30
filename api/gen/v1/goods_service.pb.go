@@ -157,13 +157,14 @@ type Product struct {
 	Labels          []string               `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty"`
 	Allergens       []string               `protobuf:"bytes,7,rep,name=allergens,proto3" json:"allergens,omitempty"`
 	Additives       []string               `protobuf:"bytes,8,rep,name=additives,proto3" json:"additives,omitempty"`
-	IngredientsText string                 `protobuf:"bytes,9,opt,name=ingredients_text,json=ingredientsText,proto3" json:"ingredients_text,omitempty"`
-	Nutriments      *Nutriments            `protobuf:"bytes,10,opt,name=nutriments,proto3" json:"nutriments,omitempty"`
-	NutrientLevels  *NutrientLevels        `protobuf:"bytes,11,opt,name=nutrient_levels,json=nutrientLevels,proto3" json:"nutrient_levels,omitempty"`
-	Nutriscore      *Nutriscore            `protobuf:"bytes,12,opt,name=nutriscore,proto3" json:"nutriscore,omitempty"`
-	NovaGroup       int32                  `protobuf:"varint,13,opt,name=nova_group,json=novaGroup,proto3" json:"nova_group,omitempty"`
-	EcoscoreGrade   string                 `protobuf:"bytes,14,opt,name=ecoscore_grade,json=ecoscoreGrade,proto3" json:"ecoscore_grade,omitempty"`
-	ImageUrl        string                 `protobuf:"bytes,15,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	Ingredients     []*Ingredient          `protobuf:"bytes,9,rep,name=ingredients,proto3" json:"ingredients,omitempty"`
+	IngredientsText string                 `protobuf:"bytes,10,opt,name=ingredients_text,json=ingredientsText,proto3" json:"ingredients_text,omitempty"`
+	Nutriments      *Nutriments            `protobuf:"bytes,11,opt,name=nutriments,proto3" json:"nutriments,omitempty"`
+	NutrientLevels  *NutrientLevels        `protobuf:"bytes,12,opt,name=nutrient_levels,json=nutrientLevels,proto3" json:"nutrient_levels,omitempty"`
+	Nutriscore      *Nutriscore            `protobuf:"bytes,13,opt,name=nutriscore,proto3" json:"nutriscore,omitempty"`
+	NovaGroup       int32                  `protobuf:"varint,14,opt,name=nova_group,json=novaGroup,proto3" json:"nova_group,omitempty"`
+	EcoscoreGrade   string                 `protobuf:"bytes,15,opt,name=ecoscore_grade,json=ecoscoreGrade,proto3" json:"ecoscore_grade,omitempty"`
+	ImageUrl        string                 `protobuf:"bytes,16,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -250,6 +251,13 @@ func (x *Product) GetAllergens() []string {
 func (x *Product) GetAdditives() []string {
 	if x != nil {
 		return x.Additives
+	}
+	return nil
+}
+
+func (x *Product) GetIngredients() []*Ingredient {
+	if x != nil {
+		return x.Ingredients
 	}
 	return nil
 }
@@ -539,6 +547,82 @@ func (x *Nutriscore) GetScore() int32 {
 	return 0
 }
 
+type Ingredient struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ID              string                 `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
+	Text            string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	PercentEstimate float64                `protobuf:"fixed64,3,opt,name=percent_estimate,json=percentEstimate,proto3" json:"percent_estimate,omitempty"`
+	Vegan           string                 `protobuf:"bytes,4,opt,name=vegan,proto3" json:"vegan,omitempty"`
+	Vegetarian      string                 `protobuf:"bytes,5,opt,name=vegetarian,proto3" json:"vegetarian,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *Ingredient) Reset() {
+	*x = Ingredient{}
+	mi := &file_v1_goods_service_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Ingredient) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Ingredient) ProtoMessage() {}
+
+func (x *Ingredient) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Ingredient.ProtoReflect.Descriptor instead.
+func (*Ingredient) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Ingredient) GetID() string {
+	if x != nil {
+		return x.ID
+	}
+	return ""
+}
+
+func (x *Ingredient) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *Ingredient) GetPercentEstimate() float64 {
+	if x != nil {
+		return x.PercentEstimate
+	}
+	return 0
+}
+
+func (x *Ingredient) GetVegan() string {
+	if x != nil {
+		return x.Vegan
+	}
+	return ""
+}
+
+func (x *Ingredient) GetVegetarian() string {
+	if x != nil {
+		return x.Vegetarian
+	}
+	return ""
+}
+
 var File_v1_goods_service_proto protoreflect.FileDescriptor
 
 const file_v1_goods_service_proto_rawDesc = "" +
@@ -549,7 +633,7 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\x16GetProductCardResponse\x12)\n" +
 	"\x0fbarcode_pending\x18\x01 \x01(\tH\x00R\x0ebarcodePending\x12-\n" +
 	"\aproduct\x18\x02 \x01(\v2\x11.goods.v1.ProductH\x00R\aproductB\b\n" +
-	"\x06result\"\x9c\x04\n" +
+	"\x06result\"\xd4\x04\n" +
 	"\aProduct\x12\x18\n" +
 	"\abarcode\x18\x01 \x01(\tR\abarcode\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
@@ -560,20 +644,21 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"categories\x12\x16\n" +
 	"\x06labels\x18\x06 \x03(\tR\x06labels\x12\x1c\n" +
 	"\tallergens\x18\a \x03(\tR\tallergens\x12\x1c\n" +
-	"\tadditives\x18\b \x03(\tR\tadditives\x12)\n" +
-	"\x10ingredients_text\x18\t \x01(\tR\x0fingredientsText\x124\n" +
+	"\tadditives\x18\b \x03(\tR\tadditives\x126\n" +
+	"\vingredients\x18\t \x03(\v2\x14.goods.v1.IngredientR\vingredients\x12)\n" +
+	"\x10ingredients_text\x18\n" +
+	" \x01(\tR\x0fingredientsText\x124\n" +
 	"\n" +
-	"nutriments\x18\n" +
-	" \x01(\v2\x14.goods.v1.NutrimentsR\n" +
+	"nutriments\x18\v \x01(\v2\x14.goods.v1.NutrimentsR\n" +
 	"nutriments\x12A\n" +
-	"\x0fnutrient_levels\x18\v \x01(\v2\x18.goods.v1.NutrientLevelsR\x0enutrientLevels\x124\n" +
+	"\x0fnutrient_levels\x18\f \x01(\v2\x18.goods.v1.NutrientLevelsR\x0enutrientLevels\x124\n" +
 	"\n" +
-	"nutriscore\x18\f \x01(\v2\x14.goods.v1.NutriscoreR\n" +
+	"nutriscore\x18\r \x01(\v2\x14.goods.v1.NutriscoreR\n" +
 	"nutriscore\x12\x1d\n" +
 	"\n" +
-	"nova_group\x18\r \x01(\x05R\tnovaGroup\x12%\n" +
-	"\x0eecoscore_grade\x18\x0e \x01(\tR\recoscoreGrade\x12\x1b\n" +
-	"\timage_url\x18\x0f \x01(\tR\bimageUrl\"\xa3\x02\n" +
+	"nova_group\x18\x0e \x01(\x05R\tnovaGroup\x12%\n" +
+	"\x0eecoscore_grade\x18\x0f \x01(\tR\recoscoreGrade\x12\x1b\n" +
+	"\timage_url\x18\x10 \x01(\tR\bimageUrl\"\xa3\x02\n" +
 	"\n" +
 	"Nutriments\x12\x1f\n" +
 	"\venergy_kcal\x18\x01 \x01(\x01R\n" +
@@ -596,7 +681,16 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\n" +
 	"Nutriscore\x12\x14\n" +
 	"\x05grade\x18\x01 \x01(\tR\x05grade\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x05R\x05score2c\n" +
+	"\x05score\x18\x02 \x01(\x05R\x05score\"\x91\x01\n" +
+	"\n" +
+	"Ingredient\x12\x0e\n" +
+	"\x02ID\x18\x01 \x01(\tR\x02ID\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\x12)\n" +
+	"\x10percent_estimate\x18\x03 \x01(\x01R\x0fpercentEstimate\x12\x14\n" +
+	"\x05vegan\x18\x04 \x01(\tR\x05vegan\x12\x1e\n" +
+	"\n" +
+	"vegetarian\x18\x05 \x01(\tR\n" +
+	"vegetarian2c\n" +
 	"\fGoodsService\x12S\n" +
 	"\x0eGetProductCard\x12\x1f.goods.v1.GetProductCardRequest\x1a .goods.v1.GetProductCardResponseB\x1fZ\x1dgoods-service/api/v1;goods_v1b\x06proto3"
 
@@ -612,7 +706,7 @@ func file_v1_goods_service_proto_rawDescGZIP() []byte {
 	return file_v1_goods_service_proto_rawDescData
 }
 
-var file_v1_goods_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_v1_goods_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_v1_goods_service_proto_goTypes = []any{
 	(*GetProductCardRequest)(nil),  // 0: goods.v1.GetProductCardRequest
 	(*GetProductCardResponse)(nil), // 1: goods.v1.GetProductCardResponse
@@ -620,19 +714,21 @@ var file_v1_goods_service_proto_goTypes = []any{
 	(*Nutriments)(nil),             // 3: goods.v1.Nutriments
 	(*NutrientLevels)(nil),         // 4: goods.v1.NutrientLevels
 	(*Nutriscore)(nil),             // 5: goods.v1.Nutriscore
+	(*Ingredient)(nil),             // 6: goods.v1.Ingredient
 }
 var file_v1_goods_service_proto_depIdxs = []int32{
 	2, // 0: goods.v1.GetProductCardResponse.product:type_name -> goods.v1.Product
-	3, // 1: goods.v1.Product.nutriments:type_name -> goods.v1.Nutriments
-	4, // 2: goods.v1.Product.nutrient_levels:type_name -> goods.v1.NutrientLevels
-	5, // 3: goods.v1.Product.nutriscore:type_name -> goods.v1.Nutriscore
-	0, // 4: goods.v1.GoodsService.GetProductCard:input_type -> goods.v1.GetProductCardRequest
-	1, // 5: goods.v1.GoodsService.GetProductCard:output_type -> goods.v1.GetProductCardResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	6, // 1: goods.v1.Product.ingredients:type_name -> goods.v1.Ingredient
+	3, // 2: goods.v1.Product.nutriments:type_name -> goods.v1.Nutriments
+	4, // 3: goods.v1.Product.nutrient_levels:type_name -> goods.v1.NutrientLevels
+	5, // 4: goods.v1.Product.nutriscore:type_name -> goods.v1.Nutriscore
+	0, // 5: goods.v1.GoodsService.GetProductCard:input_type -> goods.v1.GetProductCardRequest
+	1, // 6: goods.v1.GoodsService.GetProductCard:output_type -> goods.v1.GetProductCardResponse
+	6, // [6:7] is the sub-list for method output_type
+	5, // [5:6] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_v1_goods_service_proto_init() }
@@ -650,7 +746,7 @@ func file_v1_goods_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_goods_service_proto_rawDesc), len(file_v1_goods_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

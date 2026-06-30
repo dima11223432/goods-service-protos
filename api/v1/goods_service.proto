@@ -28,14 +28,15 @@ message Product {
   repeated string labels = 6;
   repeated string allergens = 7;
   repeated string additives = 8;
-  string ingredients_text = 9;
+  repeated Ingredient ingredients = 9;
+  string ingredients_text = 10;
 
-  Nutriments nutriments = 10;
-  NutrientLevels nutrient_levels = 11;
-  Nutriscore nutriscore = 12;
-  int32 nova_group = 13;
-  string ecoscore_grade = 14;
-  string image_url = 15;
+  Nutriments nutriments = 11;
+  NutrientLevels nutrient_levels = 12;
+  Nutriscore nutriscore = 13;
+  int32 nova_group = 14;
+  string ecoscore_grade = 15;
+  string image_url = 16;
 }
 
 message Nutriments {
@@ -61,4 +62,12 @@ message NutrientLevels {
 message Nutriscore {
   string grade = 1;
   int32 score = 2;
+}
+
+message Ingredient {
+  string ID = 1;
+  string text = 2;
+  double percent_estimate = 3;
+  string vegan = 4;
+  string vegetarian = 5;
 }
