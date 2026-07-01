@@ -1,4 +1,4 @@
-module protos
+module github.com/dima11223432/goods-service-protos
 
 go 1.26.3
 
