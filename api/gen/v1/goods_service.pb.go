@@ -150,21 +150,22 @@ func (*GetProductCardResponse_Product) isGetProductCardResponse_Result() {}
 type Product struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Barcode         string                 `protobuf:"bytes,1,opt,name=barcode,proto3" json:"barcode,omitempty"`
-	Name            string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Brands          string                 `protobuf:"bytes,3,opt,name=brands,proto3" json:"brands,omitempty"`
-	Quantity        string                 `protobuf:"bytes,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
-	Categories      []string               `protobuf:"bytes,5,rep,name=categories,proto3" json:"categories,omitempty"`
-	Labels          []string               `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty"`
-	Allergens       []string               `protobuf:"bytes,7,rep,name=allergens,proto3" json:"allergens,omitempty"`
-	Additives       []string               `protobuf:"bytes,8,rep,name=additives,proto3" json:"additives,omitempty"`
-	Ingredients     []*Ingredient          `protobuf:"bytes,9,rep,name=ingredients,proto3" json:"ingredients,omitempty"`
-	IngredientsText string                 `protobuf:"bytes,10,opt,name=ingredients_text,json=ingredientsText,proto3" json:"ingredients_text,omitempty"`
-	Nutriments      *Nutriments            `protobuf:"bytes,11,opt,name=nutriments,proto3" json:"nutriments,omitempty"`
-	NutrientLevels  *NutrientLevels        `protobuf:"bytes,12,opt,name=nutrient_levels,json=nutrientLevels,proto3" json:"nutrient_levels,omitempty"`
-	Nutriscore      *Nutriscore            `protobuf:"bytes,13,opt,name=nutriscore,proto3" json:"nutriscore,omitempty"`
-	NovaGroup       int32                  `protobuf:"varint,14,opt,name=nova_group,json=novaGroup,proto3" json:"nova_group,omitempty"`
-	EcoscoreGrade   string                 `protobuf:"bytes,15,opt,name=ecoscore_grade,json=ecoscoreGrade,proto3" json:"ecoscore_grade,omitempty"`
-	ImageUrl        string                 `protobuf:"bytes,16,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	Status          int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
+	Name            string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Brands          string                 `protobuf:"bytes,4,opt,name=brands,proto3" json:"brands,omitempty"`
+	Quantity        string                 `protobuf:"bytes,5,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	Categories      []string               `protobuf:"bytes,6,rep,name=categories,proto3" json:"categories,omitempty"`
+	Labels          []string               `protobuf:"bytes,7,rep,name=labels,proto3" json:"labels,omitempty"`
+	Allergens       []string               `protobuf:"bytes,8,rep,name=allergens,proto3" json:"allergens,omitempty"`
+	Additives       []string               `protobuf:"bytes,9,rep,name=additives,proto3" json:"additives,omitempty"`
+	Ingredients     []*Ingredient          `protobuf:"bytes,10,rep,name=ingredients,proto3" json:"ingredients,omitempty"`
+	IngredientsText string                 `protobuf:"bytes,11,opt,name=ingredients_text,json=ingredientsText,proto3" json:"ingredients_text,omitempty"`
+	Nutriments      *Nutriments            `protobuf:"bytes,12,opt,name=nutriments,proto3" json:"nutriments,omitempty"`
+	NutrientLevels  *NutrientLevels        `protobuf:"bytes,13,opt,name=nutrient_levels,json=nutrientLevels,proto3" json:"nutrient_levels,omitempty"`
+	Nutriscore      *Nutriscore            `protobuf:"bytes,14,opt,name=nutriscore,proto3" json:"nutriscore,omitempty"`
+	NovaGroup       int32                  `protobuf:"varint,15,opt,name=nova_group,json=novaGroup,proto3" json:"nova_group,omitempty"`
+	EcoscoreGrade   string                 `protobuf:"bytes,16,opt,name=ecoscore_grade,json=ecoscoreGrade,proto3" json:"ecoscore_grade,omitempty"`
+	ImageUrl        string                 `protobuf:"bytes,17,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -204,6 +205,13 @@ func (x *Product) GetBarcode() string {
 		return x.Barcode
 	}
 	return ""
+}
+
+func (x *Product) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
 }
 
 func (x *Product) GetName() string {
@@ -633,32 +641,33 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\x16GetProductCardResponse\x12)\n" +
 	"\x0fbarcode_pending\x18\x01 \x01(\tH\x00R\x0ebarcodePending\x12-\n" +
 	"\aproduct\x18\x02 \x01(\v2\x11.goods.v1.ProductH\x00R\aproductB\b\n" +
-	"\x06result\"\xd4\x04\n" +
+	"\x06result\"\xec\x04\n" +
 	"\aProduct\x12\x18\n" +
-	"\abarcode\x18\x01 \x01(\tR\abarcode\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
-	"\x06brands\x18\x03 \x01(\tR\x06brands\x12\x1a\n" +
-	"\bquantity\x18\x04 \x01(\tR\bquantity\x12\x1e\n" +
+	"\abarcode\x18\x01 \x01(\tR\abarcode\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x16\n" +
+	"\x06brands\x18\x04 \x01(\tR\x06brands\x12\x1a\n" +
+	"\bquantity\x18\x05 \x01(\tR\bquantity\x12\x1e\n" +
 	"\n" +
-	"categories\x18\x05 \x03(\tR\n" +
+	"categories\x18\x06 \x03(\tR\n" +
 	"categories\x12\x16\n" +
-	"\x06labels\x18\x06 \x03(\tR\x06labels\x12\x1c\n" +
-	"\tallergens\x18\a \x03(\tR\tallergens\x12\x1c\n" +
-	"\tadditives\x18\b \x03(\tR\tadditives\x126\n" +
-	"\vingredients\x18\t \x03(\v2\x14.goods.v1.IngredientR\vingredients\x12)\n" +
-	"\x10ingredients_text\x18\n" +
-	" \x01(\tR\x0fingredientsText\x124\n" +
+	"\x06labels\x18\a \x03(\tR\x06labels\x12\x1c\n" +
+	"\tallergens\x18\b \x03(\tR\tallergens\x12\x1c\n" +
+	"\tadditives\x18\t \x03(\tR\tadditives\x126\n" +
+	"\vingredients\x18\n" +
+	" \x03(\v2\x14.goods.v1.IngredientR\vingredients\x12)\n" +
+	"\x10ingredients_text\x18\v \x01(\tR\x0fingredientsText\x124\n" +
 	"\n" +
-	"nutriments\x18\v \x01(\v2\x14.goods.v1.NutrimentsR\n" +
+	"nutriments\x18\f \x01(\v2\x14.goods.v1.NutrimentsR\n" +
 	"nutriments\x12A\n" +
-	"\x0fnutrient_levels\x18\f \x01(\v2\x18.goods.v1.NutrientLevelsR\x0enutrientLevels\x124\n" +
+	"\x0fnutrient_levels\x18\r \x01(\v2\x18.goods.v1.NutrientLevelsR\x0enutrientLevels\x124\n" +
 	"\n" +
-	"nutriscore\x18\r \x01(\v2\x14.goods.v1.NutriscoreR\n" +
+	"nutriscore\x18\x0e \x01(\v2\x14.goods.v1.NutriscoreR\n" +
 	"nutriscore\x12\x1d\n" +
 	"\n" +
-	"nova_group\x18\x0e \x01(\x05R\tnovaGroup\x12%\n" +
-	"\x0eecoscore_grade\x18\x0f \x01(\tR\recoscoreGrade\x12\x1b\n" +
-	"\timage_url\x18\x10 \x01(\tR\bimageUrl\"\xa3\x02\n" +
+	"nova_group\x18\x0f \x01(\x05R\tnovaGroup\x12%\n" +
+	"\x0eecoscore_grade\x18\x10 \x01(\tR\recoscoreGrade\x12\x1b\n" +
+	"\timage_url\x18\x11 \x01(\tR\bimageUrl\"\xa3\x02\n" +
 	"\n" +
 	"Nutriments\x12\x1f\n" +
 	"\venergy_kcal\x18\x01 \x01(\x01R\n" +

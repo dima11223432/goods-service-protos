@@ -21,22 +21,23 @@ message GetProductCardResponse {
 
 message Product {
   string barcode = 1;
-  string name = 2;
-  string brands = 3;
-  string quantity = 4;
-  repeated string categories = 5;
-  repeated string labels = 6;
-  repeated string allergens = 7;
-  repeated string additives = 8;
-  repeated Ingredient ingredients = 9;
-  string ingredients_text = 10;
+  int32 status = 2;
+  string name = 3;
+  string brands = 4;
+  string quantity = 5;
+  repeated string categories = 6;
+  repeated string labels = 7;
+  repeated string allergens = 8;
+  repeated string additives = 9;
+  repeated Ingredient ingredients = 10;
+  string ingredients_text = 11;
 
-  Nutriments nutriments = 11;
-  NutrientLevels nutrient_levels = 12;
-  Nutriscore nutriscore = 13;
-  int32 nova_group = 14;
-  string ecoscore_grade = 15;
-  string image_url = 16;
+  Nutriments nutriments = 12;
+  NutrientLevels nutrient_levels = 13;
+  Nutriscore nutriscore = 14;
+  int32 nova_group = 15;
+  string ecoscore_grade = 16;
+  string image_url = 17;
 }
 
 message Nutriments {
