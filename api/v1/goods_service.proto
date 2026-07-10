@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 option go_package = "goods-service/api/v1;goods_v1";
 
 service GoodsService {
-  rpc GetProductRating(GetProductRatingRequest) returns (GetProductRatingResponse);
+  rpc GetProductRatings(GetProductRatingRequest) returns (GetProductRatingResponse);
   rpc GetProductCard(GetProductCardRequest) returns (GetProductCardResponse);
   rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResponse);
 }

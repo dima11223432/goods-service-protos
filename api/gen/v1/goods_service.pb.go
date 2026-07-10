@@ -1052,9 +1052,9 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\x17GetProductRatingRequest\x12\x18\n" +
 	"\abarcode\x18\x01 \x01(\tR\abarcode\"N\n" +
 	"\x18GetProductRatingResponse\x122\n" +
-	"\aratings\x18\x01 \x01(\v2\x18.goods.v1.ProductRatingsR\aratings2\x93\x02\n" +
-	"\fGoodsService\x12Y\n" +
-	"\x10GetProductRating\x12!.goods.v1.GetProductRatingRequest\x1a\".goods.v1.GetProductRatingResponse\x12S\n" +
+	"\aratings\x18\x01 \x01(\v2\x18.goods.v1.ProductRatingsR\aratings2\x94\x02\n" +
+	"\fGoodsService\x12Z\n" +
+	"\x11GetProductRatings\x12!.goods.v1.GetProductRatingRequest\x1a\".goods.v1.GetProductRatingResponse\x12S\n" +
 	"\x0eGetProductCard\x12\x1f.goods.v1.GetProductCardRequest\x1a .goods.v1.GetProductCardResponse\x12S\n" +
 	"\x0eSearchProducts\x12\x1f.goods.v1.SearchProductsRequest\x1a .goods.v1.SearchProductsResponseB\x1fZ\x1dgoods-service/api/v1;goods_v1b\x06proto3"
 
@@ -1099,10 +1099,10 @@ var file_v1_goods_service_proto_depIdxs = []int32{
 	9,  // 7: goods.v1.ProductRatings.ratings:type_name -> goods.v1.RatingResult
 	14, // 8: goods.v1.ProductRatings.updated_at:type_name -> google.protobuf.Timestamp
 	10, // 9: goods.v1.GetProductRatingResponse.ratings:type_name -> goods.v1.ProductRatings
-	11, // 10: goods.v1.GoodsService.GetProductRating:input_type -> goods.v1.GetProductRatingRequest
+	11, // 10: goods.v1.GoodsService.GetProductRatings:input_type -> goods.v1.GetProductRatingRequest
 	0,  // 11: goods.v1.GoodsService.GetProductCard:input_type -> goods.v1.GetProductCardRequest
 	7,  // 12: goods.v1.GoodsService.SearchProducts:input_type -> goods.v1.SearchProductsRequest
-	12, // 13: goods.v1.GoodsService.GetProductRating:output_type -> goods.v1.GetProductRatingResponse
+	12, // 13: goods.v1.GoodsService.GetProductRatings:output_type -> goods.v1.GetProductRatingResponse
 	1,  // 14: goods.v1.GoodsService.GetProductCard:output_type -> goods.v1.GetProductCardResponse
 	8,  // 15: goods.v1.GoodsService.SearchProducts:output_type -> goods.v1.SearchProductsResponse
 	13, // [13:16] is the sub-list for method output_type
