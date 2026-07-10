@@ -872,27 +872,27 @@ func (x *ProductRatings) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-type GetProductRatingRequest struct {
+type GetProductRatingsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Barcode       string                 `protobuf:"bytes,1,opt,name=barcode,proto3" json:"barcode,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetProductRatingRequest) Reset() {
-	*x = GetProductRatingRequest{}
+func (x *GetProductRatingsRequest) Reset() {
+	*x = GetProductRatingsRequest{}
 	mi := &file_v1_goods_service_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetProductRatingRequest) String() string {
+func (x *GetProductRatingsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetProductRatingRequest) ProtoMessage() {}
+func (*GetProductRatingsRequest) ProtoMessage() {}
 
-func (x *GetProductRatingRequest) ProtoReflect() protoreflect.Message {
+func (x *GetProductRatingsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_v1_goods_service_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -904,39 +904,39 @@ func (x *GetProductRatingRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetProductRatingRequest.ProtoReflect.Descriptor instead.
-func (*GetProductRatingRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetProductRatingsRequest.ProtoReflect.Descriptor instead.
+func (*GetProductRatingsRequest) Descriptor() ([]byte, []int) {
 	return file_v1_goods_service_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *GetProductRatingRequest) GetBarcode() string {
+func (x *GetProductRatingsRequest) GetBarcode() string {
 	if x != nil {
 		return x.Barcode
 	}
 	return ""
 }
 
-type GetProductRatingResponse struct {
+type GetProductRatingsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Ratings       *ProductRatings        `protobuf:"bytes,1,opt,name=ratings,proto3" json:"ratings,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetProductRatingResponse) Reset() {
-	*x = GetProductRatingResponse{}
+func (x *GetProductRatingsResponse) Reset() {
+	*x = GetProductRatingsResponse{}
 	mi := &file_v1_goods_service_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetProductRatingResponse) String() string {
+func (x *GetProductRatingsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetProductRatingResponse) ProtoMessage() {}
+func (*GetProductRatingsResponse) ProtoMessage() {}
 
-func (x *GetProductRatingResponse) ProtoReflect() protoreflect.Message {
+func (x *GetProductRatingsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_v1_goods_service_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -948,12 +948,12 @@ func (x *GetProductRatingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetProductRatingResponse.ProtoReflect.Descriptor instead.
-func (*GetProductRatingResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetProductRatingsResponse.ProtoReflect.Descriptor instead.
+func (*GetProductRatingsResponse) Descriptor() ([]byte, []int) {
 	return file_v1_goods_service_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *GetProductRatingResponse) GetRatings() *ProductRatings {
+func (x *GetProductRatingsResponse) GetRatings() *ProductRatings {
 	if x != nil {
 		return x.Ratings
 	}
@@ -1048,13 +1048,13 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\abarcode\x18\x01 \x01(\tR\abarcode\x120\n" +
 	"\aratings\x18\x02 \x03(\v2\x16.goods.v1.RatingResultR\aratings\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"3\n" +
-	"\x17GetProductRatingRequest\x12\x18\n" +
-	"\abarcode\x18\x01 \x01(\tR\abarcode\"N\n" +
-	"\x18GetProductRatingResponse\x122\n" +
-	"\aratings\x18\x01 \x01(\v2\x18.goods.v1.ProductRatingsR\aratings2\x94\x02\n" +
-	"\fGoodsService\x12Z\n" +
-	"\x11GetProductRatings\x12!.goods.v1.GetProductRatingRequest\x1a\".goods.v1.GetProductRatingResponse\x12S\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"4\n" +
+	"\x18GetProductRatingsRequest\x12\x18\n" +
+	"\abarcode\x18\x01 \x01(\tR\abarcode\"O\n" +
+	"\x19GetProductRatingsResponse\x122\n" +
+	"\aratings\x18\x01 \x01(\v2\x18.goods.v1.ProductRatingsR\aratings2\x97\x02\n" +
+	"\fGoodsService\x12]\n" +
+	"\x12GetProductRatingss\x12\".goods.v1.GetProductRatingsRequest\x1a#.goods.v1.GetProductRatingsResponse\x12S\n" +
 	"\x0eGetProductCard\x12\x1f.goods.v1.GetProductCardRequest\x1a .goods.v1.GetProductCardResponse\x12S\n" +
 	"\x0eSearchProducts\x12\x1f.goods.v1.SearchProductsRequest\x1a .goods.v1.SearchProductsResponseB\x1fZ\x1dgoods-service/api/v1;goods_v1b\x06proto3"
 
@@ -1072,21 +1072,21 @@ func file_v1_goods_service_proto_rawDescGZIP() []byte {
 
 var file_v1_goods_service_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_v1_goods_service_proto_goTypes = []any{
-	(*GetProductCardRequest)(nil),    // 0: goods.v1.GetProductCardRequest
-	(*GetProductCardResponse)(nil),   // 1: goods.v1.GetProductCardResponse
-	(*Product)(nil),                  // 2: goods.v1.Product
-	(*Nutriments)(nil),               // 3: goods.v1.Nutriments
-	(*NutrientLevels)(nil),           // 4: goods.v1.NutrientLevels
-	(*Nutriscore)(nil),               // 5: goods.v1.Nutriscore
-	(*Ingredient)(nil),               // 6: goods.v1.Ingredient
-	(*SearchProductsRequest)(nil),    // 7: goods.v1.SearchProductsRequest
-	(*SearchProductsResponse)(nil),   // 8: goods.v1.SearchProductsResponse
-	(*RatingResult)(nil),             // 9: goods.v1.RatingResult
-	(*ProductRatings)(nil),           // 10: goods.v1.ProductRatings
-	(*GetProductRatingRequest)(nil),  // 11: goods.v1.GetProductRatingRequest
-	(*GetProductRatingResponse)(nil), // 12: goods.v1.GetProductRatingResponse
-	nil,                              // 13: goods.v1.RatingResult.DetailsEntry
-	(*timestamppb.Timestamp)(nil),    // 14: google.protobuf.Timestamp
+	(*GetProductCardRequest)(nil),     // 0: goods.v1.GetProductCardRequest
+	(*GetProductCardResponse)(nil),    // 1: goods.v1.GetProductCardResponse
+	(*Product)(nil),                   // 2: goods.v1.Product
+	(*Nutriments)(nil),                // 3: goods.v1.Nutriments
+	(*NutrientLevels)(nil),            // 4: goods.v1.NutrientLevels
+	(*Nutriscore)(nil),                // 5: goods.v1.Nutriscore
+	(*Ingredient)(nil),                // 6: goods.v1.Ingredient
+	(*SearchProductsRequest)(nil),     // 7: goods.v1.SearchProductsRequest
+	(*SearchProductsResponse)(nil),    // 8: goods.v1.SearchProductsResponse
+	(*RatingResult)(nil),              // 9: goods.v1.RatingResult
+	(*ProductRatings)(nil),            // 10: goods.v1.ProductRatings
+	(*GetProductRatingsRequest)(nil),  // 11: goods.v1.GetProductRatingsRequest
+	(*GetProductRatingsResponse)(nil), // 12: goods.v1.GetProductRatingsResponse
+	nil,                               // 13: goods.v1.RatingResult.DetailsEntry
+	(*timestamppb.Timestamp)(nil),     // 14: google.protobuf.Timestamp
 }
 var file_v1_goods_service_proto_depIdxs = []int32{
 	2,  // 0: goods.v1.GetProductCardResponse.product:type_name -> goods.v1.Product
@@ -1098,11 +1098,11 @@ var file_v1_goods_service_proto_depIdxs = []int32{
 	13, // 6: goods.v1.RatingResult.details:type_name -> goods.v1.RatingResult.DetailsEntry
 	9,  // 7: goods.v1.ProductRatings.ratings:type_name -> goods.v1.RatingResult
 	14, // 8: goods.v1.ProductRatings.updated_at:type_name -> google.protobuf.Timestamp
-	10, // 9: goods.v1.GetProductRatingResponse.ratings:type_name -> goods.v1.ProductRatings
-	11, // 10: goods.v1.GoodsService.GetProductRatings:input_type -> goods.v1.GetProductRatingRequest
+	10, // 9: goods.v1.GetProductRatingsResponse.ratings:type_name -> goods.v1.ProductRatings
+	11, // 10: goods.v1.GoodsService.GetProductRatingss:input_type -> goods.v1.GetProductRatingsRequest
 	0,  // 11: goods.v1.GoodsService.GetProductCard:input_type -> goods.v1.GetProductCardRequest
 	7,  // 12: goods.v1.GoodsService.SearchProducts:input_type -> goods.v1.SearchProductsRequest
-	12, // 13: goods.v1.GoodsService.GetProductRatings:output_type -> goods.v1.GetProductRatingResponse
+	12, // 13: goods.v1.GoodsService.GetProductRatingss:output_type -> goods.v1.GetProductRatingsResponse
 	1,  // 14: goods.v1.GoodsService.GetProductCard:output_type -> goods.v1.GetProductCardResponse
 	8,  // 15: goods.v1.GoodsService.SearchProducts:output_type -> goods.v1.SearchProductsResponse
 	13, // [13:16] is the sub-list for method output_type

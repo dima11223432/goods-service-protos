@@ -19,16 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GoodsService_GetProductRatings_FullMethodName = "/goods.v1.GoodsService/GetProductRatings"
-	GoodsService_GetProductCard_FullMethodName    = "/goods.v1.GoodsService/GetProductCard"
-	GoodsService_SearchProducts_FullMethodName    = "/goods.v1.GoodsService/SearchProducts"
+	GoodsService_GetProductRatingss_FullMethodName = "/goods.v1.GoodsService/GetProductRatingss"
+	GoodsService_GetProductCard_FullMethodName     = "/goods.v1.GoodsService/GetProductCard"
+	GoodsService_SearchProducts_FullMethodName     = "/goods.v1.GoodsService/SearchProducts"
 )
 
 // GoodsServiceClient is the client API for GoodsService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GoodsServiceClient interface {
-	GetProductRatings(ctx context.Context, in *GetProductRatingRequest, opts ...grpc.CallOption) (*GetProductRatingResponse, error)
+	GetProductRatingss(ctx context.Context, in *GetProductRatingsRequest, opts ...grpc.CallOption) (*GetProductRatingsResponse, error)
 	GetProductCard(ctx context.Context, in *GetProductCardRequest, opts ...grpc.CallOption) (*GetProductCardResponse, error)
 	SearchProducts(ctx context.Context, in *SearchProductsRequest, opts ...grpc.CallOption) (*SearchProductsResponse, error)
 }
@@ -41,10 +41,10 @@ func NewGoodsServiceClient(cc grpc.ClientConnInterface) GoodsServiceClient {
 	return &goodsServiceClient{cc}
 }
 
-func (c *goodsServiceClient) GetProductRatings(ctx context.Context, in *GetProductRatingRequest, opts ...grpc.CallOption) (*GetProductRatingResponse, error) {
+func (c *goodsServiceClient) GetProductRatingss(ctx context.Context, in *GetProductRatingsRequest, opts ...grpc.CallOption) (*GetProductRatingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetProductRatingResponse)
-	err := c.cc.Invoke(ctx, GoodsService_GetProductRatings_FullMethodName, in, out, cOpts...)
+	out := new(GetProductRatingsResponse)
+	err := c.cc.Invoke(ctx, GoodsService_GetProductRatingss_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func (c *goodsServiceClient) SearchProducts(ctx context.Context, in *SearchProdu
 // All implementations should embed UnimplementedGoodsServiceServer
 // for forward compatibility.
 type GoodsServiceServer interface {
-	GetProductRatings(context.Context, *GetProductRatingRequest) (*GetProductRatingResponse, error)
+	GetProductRatingss(context.Context, *GetProductRatingsRequest) (*GetProductRatingsResponse, error)
 	GetProductCard(context.Context, *GetProductCardRequest) (*GetProductCardResponse, error)
 	SearchProducts(context.Context, *SearchProductsRequest) (*SearchProductsResponse, error)
 }
@@ -87,8 +87,8 @@ type GoodsServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedGoodsServiceServer struct{}
 
-func (UnimplementedGoodsServiceServer) GetProductRatings(context.Context, *GetProductRatingRequest) (*GetProductRatingResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetProductRatings not implemented")
+func (UnimplementedGoodsServiceServer) GetProductRatingss(context.Context, *GetProductRatingsRequest) (*GetProductRatingsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductRatingss not implemented")
 }
 func (UnimplementedGoodsServiceServer) GetProductCard(context.Context, *GetProductCardRequest) (*GetProductCardResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProductCard not implemented")
@@ -116,20 +116,20 @@ func RegisterGoodsServiceServer(s grpc.ServiceRegistrar, srv GoodsServiceServer)
 	s.RegisterService(&GoodsService_ServiceDesc, srv)
 }
 
-func _GoodsService_GetProductRatings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetProductRatingRequest)
+func _GoodsService_GetProductRatingss_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductRatingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GoodsServiceServer).GetProductRatings(ctx, in)
+		return srv.(GoodsServiceServer).GetProductRatingss(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: GoodsService_GetProductRatings_FullMethodName,
+		FullMethod: GoodsService_GetProductRatingss_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GoodsServiceServer).GetProductRatings(ctx, req.(*GetProductRatingRequest))
+		return srv.(GoodsServiceServer).GetProductRatingss(ctx, req.(*GetProductRatingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -178,8 +178,8 @@ var GoodsService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*GoodsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetProductRatings",
-			Handler:    _GoodsService_GetProductRatings_Handler,
+			MethodName: "GetProductRatingss",
+			Handler:    _GoodsService_GetProductRatingss_Handler,
 		},
 		{
 			MethodName: "GetProductCard",

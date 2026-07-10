@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 option go_package = "goods-service/api/v1;goods_v1";
 
 service GoodsService {
-  rpc GetProductRatings(GetProductRatingRequest) returns (GetProductRatingResponse);
+  rpc GetProductRatingss(GetProductRatingsRequest) returns (GetProductRatingsResponse);
   rpc GetProductCard(GetProductCardRequest) returns (GetProductCardResponse);
   rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResponse);
 }
@@ -101,10 +101,10 @@ message ProductRatings {
   google.protobuf.Timestamp updated_at = 3;
 }
 
-message GetProductRatingRequest {
+message GetProductRatingsRequest {
   string barcode = 1;
 }
 
-message GetProductRatingResponse {
+message GetProductRatingsResponse {
   ProductRatings ratings = 1;
 }
