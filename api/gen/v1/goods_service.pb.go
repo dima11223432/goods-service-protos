@@ -9,6 +9,7 @@ package goods_v1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -631,11 +632,339 @@ func (x *Ingredient) GetVegetarian() string {
 	return ""
 }
 
+type SearchProductsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Query         string                 `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchProductsRequest) Reset() {
+	*x = SearchProductsRequest{}
+	mi := &file_v1_goods_service_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchProductsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchProductsRequest) ProtoMessage() {}
+
+func (x *SearchProductsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchProductsRequest.ProtoReflect.Descriptor instead.
+func (*SearchProductsRequest) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SearchProductsRequest) GetQuery() string {
+	if x != nil {
+		return x.Query
+	}
+	return ""
+}
+
+func (x *SearchProductsRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *SearchProductsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+type SearchProductsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Products      []*Product             `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
+	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchProductsResponse) Reset() {
+	*x = SearchProductsResponse{}
+	mi := &file_v1_goods_service_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchProductsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchProductsResponse) ProtoMessage() {}
+
+func (x *SearchProductsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchProductsResponse.ProtoReflect.Descriptor instead.
+func (*SearchProductsResponse) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SearchProductsResponse) GetProducts() []*Product {
+	if x != nil {
+		return x.Products
+	}
+	return nil
+}
+
+func (x *SearchProductsResponse) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type RatingResult struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Score         float64                `protobuf:"fixed64,2,opt,name=score,proto3" json:"score,omitempty"`
+	Label         string                 `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
+	Details       map[string]float64     `protobuf:"bytes,4,rep,name=details,proto3" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RatingResult) Reset() {
+	*x = RatingResult{}
+	mi := &file_v1_goods_service_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RatingResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RatingResult) ProtoMessage() {}
+
+func (x *RatingResult) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RatingResult.ProtoReflect.Descriptor instead.
+func (*RatingResult) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *RatingResult) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *RatingResult) GetScore() float64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *RatingResult) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *RatingResult) GetDetails() map[string]float64 {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+type ProductRatings struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Barcode       string                 `protobuf:"bytes,1,opt,name=barcode,proto3" json:"barcode,omitempty"`
+	Ratings       []*RatingResult        `protobuf:"bytes,2,rep,name=ratings,proto3" json:"ratings,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProductRatings) Reset() {
+	*x = ProductRatings{}
+	mi := &file_v1_goods_service_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProductRatings) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProductRatings) ProtoMessage() {}
+
+func (x *ProductRatings) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProductRatings.ProtoReflect.Descriptor instead.
+func (*ProductRatings) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ProductRatings) GetBarcode() string {
+	if x != nil {
+		return x.Barcode
+	}
+	return ""
+}
+
+func (x *ProductRatings) GetRatings() []*RatingResult {
+	if x != nil {
+		return x.Ratings
+	}
+	return nil
+}
+
+func (x *ProductRatings) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type GetProductRatingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Barcode       string                 `protobuf:"bytes,1,opt,name=barcode,proto3" json:"barcode,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProductRatingRequest) Reset() {
+	*x = GetProductRatingRequest{}
+	mi := &file_v1_goods_service_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProductRatingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProductRatingRequest) ProtoMessage() {}
+
+func (x *GetProductRatingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProductRatingRequest.ProtoReflect.Descriptor instead.
+func (*GetProductRatingRequest) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetProductRatingRequest) GetBarcode() string {
+	if x != nil {
+		return x.Barcode
+	}
+	return ""
+}
+
+type GetProductRatingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ratings       *ProductRatings        `protobuf:"bytes,1,opt,name=ratings,proto3" json:"ratings,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProductRatingResponse) Reset() {
+	*x = GetProductRatingResponse{}
+	mi := &file_v1_goods_service_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProductRatingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProductRatingResponse) ProtoMessage() {}
+
+func (x *GetProductRatingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_goods_service_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProductRatingResponse.ProtoReflect.Descriptor instead.
+func (*GetProductRatingResponse) Descriptor() ([]byte, []int) {
+	return file_v1_goods_service_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetProductRatingResponse) GetRatings() *ProductRatings {
+	if x != nil {
+		return x.Ratings
+	}
+	return nil
+}
+
 var File_v1_goods_service_proto protoreflect.FileDescriptor
 
 const file_v1_goods_service_proto_rawDesc = "" +
 	"\n" +
-	"\x16v1/goods_service.proto\x12\bgoods.v1\"1\n" +
+	"\x16v1/goods_service.proto\x12\bgoods.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"1\n" +
 	"\x15GetProductCardRequest\x12\x18\n" +
 	"\abarcode\x18\x01 \x01(\tR\abarcode\"|\n" +
 	"\x16GetProductCardResponse\x12)\n" +
@@ -699,9 +1028,35 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\x05vegan\x18\x04 \x01(\tR\x05vegan\x12\x1e\n" +
 	"\n" +
 	"vegetarian\x18\x05 \x01(\tR\n" +
-	"vegetarian2c\n" +
-	"\fGoodsService\x12S\n" +
-	"\x0eGetProductCard\x12\x1f.goods.v1.GetProductCardRequest\x1a .goods.v1.GetProductCardResponseB\x1fZ\x1dgoods-service/api/v1;goods_v1b\x06proto3"
+	"vegetarian\"[\n" +
+	"\x15SearchProductsRequest\x12\x14\n" +
+	"\x05query\x18\x01 \x01(\tR\x05query\x12\x16\n" +
+	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\"]\n" +
+	"\x16SearchProductsResponse\x12-\n" +
+	"\bproducts\x18\x01 \x03(\v2\x11.goods.v1.ProductR\bproducts\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total\"\xc9\x01\n" +
+	"\fRatingResult\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\tR\x04type\x12\x14\n" +
+	"\x05score\x18\x02 \x01(\x01R\x05score\x12\x14\n" +
+	"\x05label\x18\x03 \x01(\tR\x05label\x12=\n" +
+	"\adetails\x18\x04 \x03(\v2#.goods.v1.RatingResult.DetailsEntryR\adetails\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\x97\x01\n" +
+	"\x0eProductRatings\x12\x18\n" +
+	"\abarcode\x18\x01 \x01(\tR\abarcode\x120\n" +
+	"\aratings\x18\x02 \x03(\v2\x16.goods.v1.RatingResultR\aratings\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"3\n" +
+	"\x17GetProductRatingRequest\x12\x18\n" +
+	"\abarcode\x18\x01 \x01(\tR\abarcode\"N\n" +
+	"\x18GetProductRatingResponse\x122\n" +
+	"\aratings\x18\x01 \x01(\v2\x18.goods.v1.ProductRatingsR\aratings2\x93\x02\n" +
+	"\fGoodsService\x12Y\n" +
+	"\x10GetProductRating\x12!.goods.v1.GetProductRatingRequest\x1a\".goods.v1.GetProductRatingResponse\x12S\n" +
+	"\x0eGetProductCard\x12\x1f.goods.v1.GetProductCardRequest\x1a .goods.v1.GetProductCardResponse\x12S\n" +
+	"\x0eSearchProducts\x12\x1f.goods.v1.SearchProductsRequest\x1a .goods.v1.SearchProductsResponseB\x1fZ\x1dgoods-service/api/v1;goods_v1b\x06proto3"
 
 var (
 	file_v1_goods_service_proto_rawDescOnce sync.Once
@@ -715,29 +1070,46 @@ func file_v1_goods_service_proto_rawDescGZIP() []byte {
 	return file_v1_goods_service_proto_rawDescData
 }
 
-var file_v1_goods_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_v1_goods_service_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_v1_goods_service_proto_goTypes = []any{
-	(*GetProductCardRequest)(nil),  // 0: goods.v1.GetProductCardRequest
-	(*GetProductCardResponse)(nil), // 1: goods.v1.GetProductCardResponse
-	(*Product)(nil),                // 2: goods.v1.Product
-	(*Nutriments)(nil),             // 3: goods.v1.Nutriments
-	(*NutrientLevels)(nil),         // 4: goods.v1.NutrientLevels
-	(*Nutriscore)(nil),             // 5: goods.v1.Nutriscore
-	(*Ingredient)(nil),             // 6: goods.v1.Ingredient
+	(*GetProductCardRequest)(nil),    // 0: goods.v1.GetProductCardRequest
+	(*GetProductCardResponse)(nil),   // 1: goods.v1.GetProductCardResponse
+	(*Product)(nil),                  // 2: goods.v1.Product
+	(*Nutriments)(nil),               // 3: goods.v1.Nutriments
+	(*NutrientLevels)(nil),           // 4: goods.v1.NutrientLevels
+	(*Nutriscore)(nil),               // 5: goods.v1.Nutriscore
+	(*Ingredient)(nil),               // 6: goods.v1.Ingredient
+	(*SearchProductsRequest)(nil),    // 7: goods.v1.SearchProductsRequest
+	(*SearchProductsResponse)(nil),   // 8: goods.v1.SearchProductsResponse
+	(*RatingResult)(nil),             // 9: goods.v1.RatingResult
+	(*ProductRatings)(nil),           // 10: goods.v1.ProductRatings
+	(*GetProductRatingRequest)(nil),  // 11: goods.v1.GetProductRatingRequest
+	(*GetProductRatingResponse)(nil), // 12: goods.v1.GetProductRatingResponse
+	nil,                              // 13: goods.v1.RatingResult.DetailsEntry
+	(*timestamppb.Timestamp)(nil),    // 14: google.protobuf.Timestamp
 }
 var file_v1_goods_service_proto_depIdxs = []int32{
-	2, // 0: goods.v1.GetProductCardResponse.product:type_name -> goods.v1.Product
-	6, // 1: goods.v1.Product.ingredients:type_name -> goods.v1.Ingredient
-	3, // 2: goods.v1.Product.nutriments:type_name -> goods.v1.Nutriments
-	4, // 3: goods.v1.Product.nutrient_levels:type_name -> goods.v1.NutrientLevels
-	5, // 4: goods.v1.Product.nutriscore:type_name -> goods.v1.Nutriscore
-	0, // 5: goods.v1.GoodsService.GetProductCard:input_type -> goods.v1.GetProductCardRequest
-	1, // 6: goods.v1.GoodsService.GetProductCard:output_type -> goods.v1.GetProductCardResponse
-	6, // [6:7] is the sub-list for method output_type
-	5, // [5:6] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	2,  // 0: goods.v1.GetProductCardResponse.product:type_name -> goods.v1.Product
+	6,  // 1: goods.v1.Product.ingredients:type_name -> goods.v1.Ingredient
+	3,  // 2: goods.v1.Product.nutriments:type_name -> goods.v1.Nutriments
+	4,  // 3: goods.v1.Product.nutrient_levels:type_name -> goods.v1.NutrientLevels
+	5,  // 4: goods.v1.Product.nutriscore:type_name -> goods.v1.Nutriscore
+	2,  // 5: goods.v1.SearchProductsResponse.products:type_name -> goods.v1.Product
+	13, // 6: goods.v1.RatingResult.details:type_name -> goods.v1.RatingResult.DetailsEntry
+	9,  // 7: goods.v1.ProductRatings.ratings:type_name -> goods.v1.RatingResult
+	14, // 8: goods.v1.ProductRatings.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 9: goods.v1.GetProductRatingResponse.ratings:type_name -> goods.v1.ProductRatings
+	11, // 10: goods.v1.GoodsService.GetProductRating:input_type -> goods.v1.GetProductRatingRequest
+	0,  // 11: goods.v1.GoodsService.GetProductCard:input_type -> goods.v1.GetProductCardRequest
+	7,  // 12: goods.v1.GoodsService.SearchProducts:input_type -> goods.v1.SearchProductsRequest
+	12, // 13: goods.v1.GoodsService.GetProductRating:output_type -> goods.v1.GetProductRatingResponse
+	1,  // 14: goods.v1.GoodsService.GetProductCard:output_type -> goods.v1.GetProductCardResponse
+	8,  // 15: goods.v1.GoodsService.SearchProducts:output_type -> goods.v1.SearchProductsResponse
+	13, // [13:16] is the sub-list for method output_type
+	10, // [10:13] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_v1_goods_service_proto_init() }
@@ -755,7 +1127,7 @@ func file_v1_goods_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_goods_service_proto_rawDesc), len(file_v1_goods_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

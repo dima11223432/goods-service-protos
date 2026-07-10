@@ -19,14 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GoodsService_GetProductCard_FullMethodName = "/goods.v1.GoodsService/GetProductCard"
+	GoodsService_GetProductRating_FullMethodName = "/goods.v1.GoodsService/GetProductRating"
+	GoodsService_GetProductCard_FullMethodName   = "/goods.v1.GoodsService/GetProductCard"
+	GoodsService_SearchProducts_FullMethodName   = "/goods.v1.GoodsService/SearchProducts"
 )
 
 // GoodsServiceClient is the client API for GoodsService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GoodsServiceClient interface {
+	GetProductRating(ctx context.Context, in *GetProductRatingRequest, opts ...grpc.CallOption) (*GetProductRatingResponse, error)
 	GetProductCard(ctx context.Context, in *GetProductCardRequest, opts ...grpc.CallOption) (*GetProductCardResponse, error)
+	SearchProducts(ctx context.Context, in *SearchProductsRequest, opts ...grpc.CallOption) (*SearchProductsResponse, error)
 }
 
 type goodsServiceClient struct {
@@ -35,6 +39,16 @@ type goodsServiceClient struct {
 
 func NewGoodsServiceClient(cc grpc.ClientConnInterface) GoodsServiceClient {
 	return &goodsServiceClient{cc}
+}
+
+func (c *goodsServiceClient) GetProductRating(ctx context.Context, in *GetProductRatingRequest, opts ...grpc.CallOption) (*GetProductRatingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProductRatingResponse)
+	err := c.cc.Invoke(ctx, GoodsService_GetProductRating_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *goodsServiceClient) GetProductCard(ctx context.Context, in *GetProductCardRequest, opts ...grpc.CallOption) (*GetProductCardResponse, error) {
@@ -47,11 +61,23 @@ func (c *goodsServiceClient) GetProductCard(ctx context.Context, in *GetProductC
 	return out, nil
 }
 
+func (c *goodsServiceClient) SearchProducts(ctx context.Context, in *SearchProductsRequest, opts ...grpc.CallOption) (*SearchProductsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchProductsResponse)
+	err := c.cc.Invoke(ctx, GoodsService_SearchProducts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GoodsServiceServer is the server API for GoodsService service.
 // All implementations should embed UnimplementedGoodsServiceServer
 // for forward compatibility.
 type GoodsServiceServer interface {
+	GetProductRating(context.Context, *GetProductRatingRequest) (*GetProductRatingResponse, error)
 	GetProductCard(context.Context, *GetProductCardRequest) (*GetProductCardResponse, error)
+	SearchProducts(context.Context, *SearchProductsRequest) (*SearchProductsResponse, error)
 }
 
 // UnimplementedGoodsServiceServer should be embedded to have
@@ -61,8 +87,14 @@ type GoodsServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedGoodsServiceServer struct{}
 
+func (UnimplementedGoodsServiceServer) GetProductRating(context.Context, *GetProductRatingRequest) (*GetProductRatingResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductRating not implemented")
+}
 func (UnimplementedGoodsServiceServer) GetProductCard(context.Context, *GetProductCardRequest) (*GetProductCardResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProductCard not implemented")
+}
+func (UnimplementedGoodsServiceServer) SearchProducts(context.Context, *SearchProductsRequest) (*SearchProductsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SearchProducts not implemented")
 }
 func (UnimplementedGoodsServiceServer) testEmbeddedByValue() {}
 
@@ -84,6 +116,24 @@ func RegisterGoodsServiceServer(s grpc.ServiceRegistrar, srv GoodsServiceServer)
 	s.RegisterService(&GoodsService_ServiceDesc, srv)
 }
 
+func _GoodsService_GetProductRating_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductRatingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoodsServiceServer).GetProductRating(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoodsService_GetProductRating_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoodsServiceServer).GetProductRating(ctx, req.(*GetProductRatingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _GoodsService_GetProductCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetProductCardRequest)
 	if err := dec(in); err != nil {
@@ -102,6 +152,24 @@ func _GoodsService_GetProductCard_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GoodsService_SearchProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchProductsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoodsServiceServer).SearchProducts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GoodsService_SearchProducts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoodsServiceServer).SearchProducts(ctx, req.(*SearchProductsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // GoodsService_ServiceDesc is the grpc.ServiceDesc for GoodsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -110,8 +178,16 @@ var GoodsService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*GoodsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "GetProductRating",
+			Handler:    _GoodsService_GetProductRating_Handler,
+		},
+		{
 			MethodName: "GetProductCard",
 			Handler:    _GoodsService_GetProductCard_Handler,
+		},
+		{
+			MethodName: "SearchProducts",
+			Handler:    _GoodsService_SearchProducts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
