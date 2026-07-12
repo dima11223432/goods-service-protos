@@ -42,6 +42,7 @@ message Product {
   int32 nova_group = 15;
   string ecoscore_grade = 16;
   string image_url = 17;
+  repeated string tags = 18;
 }
 
 message Nutriments {
