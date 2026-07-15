@@ -758,6 +758,7 @@ type RatingResult struct {
 	Score         float64                `protobuf:"fixed64,2,opt,name=score,proto3" json:"score,omitempty"`
 	Label         string                 `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
 	Details       map[string]float64     `protobuf:"bytes,4,rep,name=details,proto3" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	Reasoning     string                 `protobuf:"bytes,5,opt,name=reasoning,proto3" json:"reasoning,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -818,6 +819,13 @@ func (x *RatingResult) GetDetails() map[string]float64 {
 		return x.Details
 	}
 	return nil
+}
+
+func (x *RatingResult) GetReasoning() string {
+	if x != nil {
+		return x.Reasoning
+	}
+	return ""
 }
 
 type ProductRatings struct {
@@ -1044,12 +1052,13 @@ const file_v1_goods_service_proto_rawDesc = "" +
 	"\x05limit\x18\x03 \x01(\x05R\x05limit\"]\n" +
 	"\x16SearchProductsResponse\x12-\n" +
 	"\bproducts\x18\x01 \x03(\v2\x11.goods.v1.ProductR\bproducts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total\"\xc9\x01\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total\"\xe7\x01\n" +
 	"\fRatingResult\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x01R\x05score\x12\x14\n" +
 	"\x05label\x18\x03 \x01(\tR\x05label\x12=\n" +
-	"\adetails\x18\x04 \x03(\v2#.goods.v1.RatingResult.DetailsEntryR\adetails\x1a:\n" +
+	"\adetails\x18\x04 \x03(\v2#.goods.v1.RatingResult.DetailsEntryR\adetails\x12\x1c\n" +
+	"\treasoning\x18\x05 \x01(\tR\treasoning\x1a:\n" +
 	"\fDetailsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\x97\x01\n" +

@@ -94,6 +94,7 @@ message RatingResult {
   double score = 2;
   string label = 3;
   map<string, double> details = 4;
+  string reasoning = 5;
 }
 
 message ProductRatings {
